@@ -1,11 +1,23 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
+  plugins:
+    - import_lint
   exclude: [ build/** ]
   language:
     strict-casts: true
     strict-inference: true
     strict-raw-types: true
+  errors:
+    avoid_relative_lib_imports: error
+    always_use_package_imports: error
+
+import_lint:
+  rules:
+    use_extensions_barrel:
+      target: 'package:beat_for_beat/**.dart'
+      from: 'package:beat_for_beat/extensions/**.dart'
+      except: [ 'package:beat_for_beat/extensions/extensions.dart' ]
 
 linter:
   rules:
@@ -13,7 +25,7 @@ linter:
     - always_put_control_body_on_new_line
     # - always_put_required_named_parameters_first
     - always_specify_types
-    # - always_use_package_imports
+    - always_use_package_imports
     - annotate_overrides
     # - annotate_redeclares # experimental
     - avoid_annotating_with_dynamic
@@ -145,7 +157,7 @@ linter:
     - prefer_if_null_operators
     - prefer_initializing_formals
     - prefer_inlined_adds
-    - prefer_int_literals
+    # - prefer_int_literals
     - prefer_interpolation_to_compose_strings
     - prefer_is_empty
     - prefer_is_not_empty
@@ -154,7 +166,7 @@ linter:
     - prefer_mixin
     - prefer_null_aware_method_calls
     - prefer_null_aware_operators
-    - prefer_relative_imports
+    # - prefer_relative_imports
     - prefer_single_quotes
     - prefer_spread_collections
     - prefer_typing_uninitialized_variables
