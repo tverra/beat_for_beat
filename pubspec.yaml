@@ -13,10 +13,30 @@ dependencies:
   google_fonts: ^6.1.0
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.0
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
   import_lint: ^1.0.0
 
+dependency_overrides:
+  cli_util: ^0.4.0
+
 flutter:
   uses-material-design: true
+
+# dart run flutter_launcher_icons:main
+flutter_launcher_icons:
+  android: true
+  image_path: 'assets/icons/app_icon.png'
+  adaptive_icon_foreground: 'assets/icons/app_icon_adaptive.png'
+  adaptive_icon_background: '#09118E'
+  web:
+    generate: true
+    image_path: 'assets/icons/app_icon.png'
+    background_color: '#09118E'
+    theme_color: '#09118E'
+  windows:
+    generate: true
+    image_path: 'assets/icons/app_icon.png'
+    icon_size: 256
