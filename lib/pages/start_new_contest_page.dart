@@ -1,19 +1,19 @@
 import 'package:beat_for_beat/models/contest.dart';
 import 'package:beat_for_beat/models/team.dart';
-import 'package:beat_for_beat/pages/program_page.dart';
+import 'package:beat_for_beat/pages/contest_page.dart';
 import 'package:beat_for_beat/widgets/async_elevated_button.dart';
 import 'package:beat_for_beat/widgets/dual_box_layout.dart';
 import 'package:beat_for_beat/widgets/error_dialog.dart';
 import 'package:flutter/material.dart';
 
-class StartNewProgramPage extends StatefulWidget {
-  const StartNewProgramPage({super.key});
+class StartNewContestPage extends StatefulWidget {
+  const StartNewContestPage({super.key});
 
   @override
-  State<StartNewProgramPage> createState() => _StartNewProgramPageState();
+  State<StartNewContestPage> createState() => _StartNewContestPageState();
 }
 
-class _StartNewProgramPageState extends State<StartNewProgramPage> {
+class _StartNewContestPageState extends State<StartNewContestPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _textFieldController1 = TextEditingController();
   final TextEditingController _textFieldController2 = TextEditingController();
@@ -22,7 +22,7 @@ class _StartNewProgramPageState extends State<StartNewProgramPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Start nytt program'),
+        title: const Text('Start ny konkurranse'),
         centerTitle: true,
       ),
       body: Form(
@@ -54,7 +54,7 @@ class _StartNewProgramPageState extends State<StartNewProgramPage> {
                   if (context.mounted && contest != null) {
                     await Navigator.of(context).push(
                       MaterialPageRoute<void>(
-                        builder: (_) => ProgramPage(
+                        builder: (_) => ContestPage(
                           contest: contest,
                         ),
                       ),

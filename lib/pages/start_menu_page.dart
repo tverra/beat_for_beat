@@ -1,6 +1,7 @@
 import 'package:beat_for_beat/extensions/extensions.dart';
 import 'package:beat_for_beat/main.dart';
-import 'package:beat_for_beat/pages/start_new_program_page.dart';
+import 'package:beat_for_beat/pages/continue_contest_page.dart';
+import 'package:beat_for_beat/pages/start_new_contest_page.dart';
 import 'package:flutter/material.dart';
 
 class StartMenuPage extends StatelessWidget {
@@ -20,7 +21,7 @@ class StartMenuPage extends StatelessWidget {
             onPressed: () async {
               await Navigator.of(context).push(
                 MaterialPageRoute<void>(
-                  builder: (_) => const StartNewProgramPage(),
+                  builder: (_) => const StartNewContestPage(),
                 ),
               );
             },
@@ -28,7 +29,13 @@ class StartMenuPage extends StatelessWidget {
           _StartMenuListItem(
             icon: Icons.double_arrow,
             text: 'Fortsett konkurranse',
-            onPressed: () {},
+            onPressed: () async {
+              await Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const ContinueContestPage(),
+                ),
+              );
+            },
           ),
           _StartMenuListItem(
             icon: Icons.add,

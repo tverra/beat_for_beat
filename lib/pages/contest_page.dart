@@ -6,8 +6,8 @@ import 'package:beat_for_beat/widgets/error_dialog.dart';
 import 'package:beat_for_beat/widgets/teams_builder.dart';
 import 'package:flutter/material.dart';
 
-class ProgramPage extends StatelessWidget {
-  const ProgramPage({super.key, required this.contest});
+class ContestPage extends StatelessWidget {
+  const ContestPage({super.key, required this.contest});
 
   final Contest contest;
 
