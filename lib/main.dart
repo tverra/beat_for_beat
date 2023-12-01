@@ -29,6 +29,16 @@ class BeatForBeatApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: themeColor,
         ),
+        appBarTheme: AppBarTheme(
+          backgroundColor: themeColor,
+          foregroundColor: themeColor.contrastTextColor,
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: themeColor,
+            foregroundColor: themeColor.contrastTextColor,
+          ),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: const ColoredBox(

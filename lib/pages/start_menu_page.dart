@@ -1,5 +1,6 @@
 import 'package:beat_for_beat/extensions/extensions.dart';
 import 'package:beat_for_beat/main.dart';
+import 'package:beat_for_beat/pages/start_new_program_page.dart';
 import 'package:flutter/material.dart';
 
 class StartMenuPage extends StatelessWidget {
@@ -15,17 +16,23 @@ class StartMenuPage extends StatelessWidget {
           const _Logo(),
           _StartMenuListItem(
             icon: Icons.play_arrow,
-            text: 'Start program',
-            onPressed: () {},
+            text: 'Start ny konkurranse',
+            onPressed: () async {
+              await Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (_) => const StartNewProgramPage(),
+                ),
+              );
+            },
           ),
           _StartMenuListItem(
             icon: Icons.double_arrow,
-            text: 'Fortsett program',
+            text: 'Fortsett konkurranse',
             onPressed: () {},
           ),
           _StartMenuListItem(
             icon: Icons.add,
-            text: 'Nytt program',
+            text: 'Lag nytt program',
             onPressed: () {},
           ),
           _StartMenuListItem(
@@ -103,7 +110,9 @@ class _StartMenuListItem extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(height: 1.0,),
+          const Divider(
+            height: 1.0,
+          ),
         ],
       ),
     );

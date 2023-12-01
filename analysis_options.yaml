@@ -18,6 +18,9 @@ import_lint:
       target: 'package:beat_for_beat/**.dart'
       from: 'package:beat_for_beat/extensions/**.dart'
       except: [ 'package:beat_for_beat/extensions/extensions.dart' ]
+    use_repositories_barrel:
+      target: 'package:beat_for_beat/**.dart'
+      from: 'package:beat_for_beat/database/repositories/**.dart'
 
 linter:
   rules:
@@ -87,7 +90,7 @@ linter:
     - deprecated_member_use_from_same_package
     # - diagnostic_describe_all_properties
     - directives_ordering
-    - discarded_futures
+    # - discarded_futures
     - do_not_use_environment
     - empty_catches
     - empty_constructor_bodies
