@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:beat_for_beat/database/data_parser.dart';
 import 'package:beat_for_beat/database/db_repo.dart' as db_repo;
 import 'package:beat_for_beat/extensions/extensions.dart';
@@ -14,15 +12,12 @@ class Contest {
         _finished = finished,
         _updated = updated;
 
-  factory Contest.fromJson(String json, {required int key}) {
-    final Map<String, dynamic> decoded =
-        jsonDecode(json) as Map<String, dynamic>;
-
+  factory Contest.fromMap(Map<String, dynamic> map, {int? key}) {
     return Contest(
-      key: tryParseInt(decoded['key']) ?? key,
-      created: tryParseDateTime(decoded['created']),
-      finished: tryParseDateTime(decoded['finished']),
-      updated: tryParseDateTime(decoded['updated']),
+      key: tryParseInt(map['key']) ?? key,
+      created: tryParseDateTime(map['created']),
+      finished: tryParseDateTime(map['finished']),
+      updated: tryParseDateTime(map['updated']),
     );
   }
 
@@ -37,15 +32,13 @@ class Contest {
 
   DateTime? get updated => _updated;
 
-  String toJson() {
-    final Map<String, dynamic> serialized = <String, dynamic>{
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
       'key': serializeInt(key),
       'created': serializeDateTime(_created),
       'finished': serializeDateTime(_finished),
       'updated': serializeDateTime(_updated),
     };
-
-    return jsonEncode(serialized);
   }
 
   Future<bool> save() async {

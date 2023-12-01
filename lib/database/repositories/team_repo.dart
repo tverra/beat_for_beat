@@ -1,4 +1,5 @@
 import 'package:beat_for_beat/database/database.dart';
+import 'package:beat_for_beat/extensions/extensions.dart';
 import 'package:beat_for_beat/models/team.dart';
 import 'package:idb_sqflite/idb_sqflite.dart';
 
@@ -7,7 +8,7 @@ Future<int> insertTeam(Team team) async {
   final Transaction txn = db.transaction('team', idbModeReadWrite);
   final ObjectStore store = txn.objectStore('team');
 
-  final Object key = await store.put(team.toJson(), team.key);
+  final Object key = await store.put(team.toMap());
   await txn.completed;
 
   return key as int;
@@ -21,7 +22,7 @@ Future<Team?> getTeam(int key) async {
   final Object? value = await store.getObject(key);
   await txn.completed;
 
-  return value != null ? Team.fromJson(value as String, key: key) : null;
+  return value != null ? Team.fromJson(value.castIdbResult()) : null;
 }
 
 Future<List<Team>> getTeams({int? contestKey}) async {
@@ -34,7 +35,7 @@ Future<List<Team>> getTeams({int? contestKey}) async {
 
   await cursor.listen((CursorWithValue event) {
     final Team team =
-        Team.fromJson(event.value as String, key: event.key as int);
+        Team.fromJson(event.value.castIdbResult(), key: event.key as int);
 
     if (contestKey == null || team.contestKey == contestKey) {
       matches.add(team);

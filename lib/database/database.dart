@@ -18,8 +18,8 @@ class DbProvider {
       version: 1,
       onUpgradeNeeded: (VersionChangeEvent event) {
         event.database
-          ..createObjectStore('contest', autoIncrement: true)
-          ..createObjectStore('team', autoIncrement: true);
+          ..createObjectStore('contest', keyPath: 'key', autoIncrement: true)
+          ..createObjectStore('team', keyPath: 'key', autoIncrement: true);
       },
     );
     return db;
